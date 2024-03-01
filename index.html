@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
-/*         *{
-            font-size: 15px;
-        } */
-
-        #progress-container {
-            width: 500px;
+        #container {
+            max-width: 400px;
             margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -20,7 +19,7 @@
             height: 30px;
             background-color: #ddd;
             position: relative;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         #filler {
@@ -37,11 +36,32 @@
             transform: translate(-50%, -50%);
             color: #333;
         }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.reset {
+            background-color: #f44336;
+        }
     </style>
 </head>
 <body>
 
-<div id="progress-container">
+<div id="container">
     <label for="coaching-limit">Coaching Hours Limit:</label>
     <input type="number" id="coaching-limit" placeholder="Enter limit" />
     <br>
@@ -58,7 +78,7 @@
     <input type="number" id="booking-time" placeholder="Enter booking time" />
     <br>
     <button onclick="updateProgress()">Update Progress</button>
-    <button onclick="resetProgress()">Reset</button>
+    <button onclick="resetProgress()" class="reset">Reset</button>
 
     <div id="progress-bar">
         <div id="filler"></div>
@@ -105,12 +125,10 @@
         document.getElementById('calling-time').value = '';
         document.getElementById('booking-time').value = '';
 
-        currentProgress = 0;
-
         const filler = document.getElementById('filler');
         const progressNumber = document.getElementById('progress-number');
 
-        filler.style.width = '0';
+        filler.style.width = '0%';
         progressNumber.textContent = '0 hours';
     }
 </script>
